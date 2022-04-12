@@ -1,0 +1,34 @@
+{
+    "TableName": "YourTestTable",
+    "KeySchema": [
+      { "AttributeName": "userName", "KeyType": "HASH" },
+      { "AttributeName": "officeLabel", "KeyType": "RANGE" }
+    ],
+    "AttributeDefinitions": [
+      { "AttributeName": "userName", "AttributeType": "S" },
+      { "AttributeName": "officeLabel", "AttributeType": "S" },
+      { "AttributeName": "createdAt", "AttributeType": "S" },
+      { "AttributeName": "numDesks", "AttributeType": "S" }
+    ],
+    "GlobalSecondaryIndexes" : [{
+        "IndexName" : "myGSI",
+        "KeySchema" : [
+            { "AttributeName": "createdAt", "KeyType": "HASH" },
+            { "AttributeName": "numDesks", "KeyType": "RANGE" }
+        ],
+        
+        "Projection" : {
+            "ProjectionType" : "KEYS_ONLY"
+        },
+
+        "ProvisionedThroughput": {
+            "ReadCapacityUnits": 5,
+            "WriteCapacityUnits": 5
+          }
+    }],
+ 
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 5,
+      "WriteCapacityUnits": 5
+    }
+}
