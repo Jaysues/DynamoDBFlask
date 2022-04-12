@@ -1,0 +1,27 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Test Deskbot App</h1>
+        <div>
+            <form action="/new-booking" method="post">
+                <label for="userName">user Name:</label>
+                <input type="text" id="userName" name="userName"><br><br>
+                <label for="officeLabel">office Label:</label>
+                <input type="text" id="officeLabel" name="officeLabel"><br><br>
+                <label for="createdAt">created At:</label>
+                <input type="text" id="createdAt" name="createdAt"><br><br>
+                <label for="numDesks">num Desks:</label>
+                <input type="text" id="numDesks" name="numDesks"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div>
+            {% for item in data %}
+            <div>
+                {{ item.userName }} - {{ item.officeLabel }} - {{ item.createdAt }} - {{ item.numDesks }} 
+            </div>
+            {% endfor %} 
+        </div>
+    </body>
+</html>
